@@ -39,9 +39,13 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 250px; /* ✅ すべてのカードの幅を調整 */
+    width: 300px; /* ✅ カードの幅を広く調整 */
+    min-height: 120px; /* ✅ 高さを確保して余白を確保 */
     text-align: center;
     font-size: 24px; /* ✅ カード全体のフォントサイズを大きく */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card h3 {
