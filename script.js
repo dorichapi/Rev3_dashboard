@@ -53,7 +53,6 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
         data: {
             labels: recentLabels,
             datasets: [{
-                label: label,
                 data: recentData,
                 borderColor: color,
                 backgroundColor: color,
@@ -69,11 +68,11 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             },
             plugins: {
                 legend: {
-                    display: false          // ✅ 重複表示を防ぐため凡例を非表示
+                    display: false          // ✅ 凡例を完全に非表示
                 },
                 title: {
                     display: true,
-                    text: label,
+                    text: label,            // ✅ タイトルを表示してラベルとして使用
                     font: {
                         size: 36,           // ✅ タイトルのフォントサイズを大きく
                         weight: 'bold'     // ✅ 太文字
