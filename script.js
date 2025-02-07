@@ -67,8 +67,8 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = undefine
                 borderColor: color,
                 backgroundColor: color,
                 fill: false,
-                tension: 0.3,  // ✅ 線を滑らかに
-                pointRadius: 4, // ✅ データポイントを強調
+                tension: 0.3,
+                pointRadius: 4,
             }]
         },
         options: {
@@ -77,7 +77,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = undefine
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: maxY,  // ✅ Y軸の最大値（必要に応じて設定）
+                    max: maxY,
                     title: {
                         display: true,
                         text: unit,
