@@ -71,7 +71,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 legend: {
                     labels: {
                         font: {
-                            size: 36,       // ✅ 凡例のフォントサイズを大きく
+                            size: 45,       // ✅ 凡例のフォントサイズを大きく
                             weight: 'bold'  // ✅ 太文字
                         }
                     }
