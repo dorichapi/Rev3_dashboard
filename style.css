@@ -9,15 +9,16 @@ body {
 h1 {
     color: #333;
     margin-bottom: 10px;
+    font-size: 3em; /* ✅ フォントサイズ3倍 */
 }
 
 .date-display {
-    font-size: 1.4em;
+    font-size: 4.2em; /* ✅ フォントサイズ3倍 */
     margin: 10px 0;
 }
 
 .update-time {
-    font-size: 1em;
+    font-size: 3em; /* ✅ フォントサイズ3倍 */
     color: #666;
     margin-left: 10px;
 }
@@ -42,10 +43,11 @@ h1 {
 .card h3 {
     margin: 5px 0;
     color: #444;
+    font-size: 3em; /* ✅ フォントサイズ3倍 */
 }
 
 .card strong {
-    font-size: 1.8em;
+    font-size: 5.4em; /* ✅ フォントサイズ3倍 */
     color: #000;
 }
 
@@ -72,6 +74,7 @@ canvas {
     max-width: 100%;                        /* ✅ 最大幅を親に合わせる */
     box-sizing: border-box;                 /* ✅ パディングとボーダーを含める */
     margin: 0 auto;                         /* ✅ 中央揃え */
+    font-size: 3em !important;              /* ✅ グラフ内フォントサイズ3倍 */
 }
 
 @media (max-width: 1024px) {
@@ -80,6 +83,7 @@ canvas {
     }
     canvas {
         height: 300px !important;              /* ✅ 高さを調整 */
+        font-size: 2.4em !important;           /* ✅ タブレット時のフォントサイズ調整 */
     }
 }
 
@@ -89,5 +93,6 @@ canvas {
     }
     canvas {
         height: 250px !important;              /* ✅ 高さをさらに縮小 */
+        font-size: 1.8em !important;           /* ✅ モバイル時のフォントサイズ調整 */
     }
 }
