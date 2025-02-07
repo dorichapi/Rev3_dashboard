@@ -9,16 +9,16 @@ body {
 h1 {
     color: #333;
     margin-bottom: 10px;
-    font-size: 2em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 1.5em; /* ✅ 元のフォントサイズに戻す */
 }
 
 .date-display {
-    font-size: 1.4em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 1.2em; /* ✅ 元のフォントサイズに戻す */
     margin: 10px 0;
 }
 
 .update-time {
-    font-size: 1em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 0.9em; /* ✅ 元のフォントサイズに戻す */
     color: #666;
     margin-left: 10px;
 }
@@ -47,7 +47,7 @@ h1 {
 }
 
 .card strong {
-    font-size: 1.8em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 1.5em; /* ✅ 元のフォントサイズに戻す */
     color: #000;
 }
 
