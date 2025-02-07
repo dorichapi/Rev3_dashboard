@@ -39,15 +39,9 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 200px; /* ✅ カードの幅を調整 */
+    width: 250px; /* ✅ すべてのカードの幅を調整 */
     text-align: center;
     font-size: 24px; /* ✅ カード全体のフォントサイズを大きく */
-}
-
-/* ✅ 病床利用率カードのサイズを拡大 */
-.card:nth-child(1) {
-    width: 250px;  /* ✅ 病床利用率カードの幅を大きく */
-    height: auto;  /* ✅ 高さは内容に合わせて自動調整 */
 }
 
 .card h3 {
@@ -56,6 +50,8 @@ h1 {
     font-size: 28px; /* ✅ 項目タイトルのフォントサイズを大きく */
     font-weight: bold;
     white-space: nowrap;  /* ✅ 1行で表示するように設定 */
+    overflow: hidden;     /* ✅ テキストのはみ出しを防止 */
+    text-overflow: ellipsis; /* ✅ テキストが長い場合は省略記号で表示 */
 }
 
 .card strong {
