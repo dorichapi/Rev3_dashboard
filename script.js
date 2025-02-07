@@ -9,10 +9,15 @@ async function fetchData() {
         const latestData = result.data[result.data.length - 1];
 
         // ✅ 日付と更新時刻の表示
-        document.getElementById("latest-date").innerHTML = `${formatDate(latestData["日付"])} 
-            <span class="update-time">更新時刻：${formatTime(result.lastEditTime)}</span>`;
+        const dateElement = document.getElementById("latest-date");
+        dateElement.innerHTML = `${formatDate(latestData["日付"])} <span class="update-time">更新時刻：${formatTime(result.lastEditTime)}</span>`;
+        dateElement.style.fontSize = "32px"; // ✅ 日付と更新時刻のフォントサイズを大きく
 
         // ✅ データの表示
+        document.querySelectorAll(".dashboard .card").forEach(card => {
+            card.style.fontSize = "28px"; // ✅ カード内のフォントサイズを大きく
+        });
+
         document.querySelector(".dashboard .card:nth-child(1) strong").innerText = `${(latestData["病床利用率 (%)"] * 100).toFixed(1)}%`;
         document.querySelector(".dashboard .card:nth-child(2) strong").innerText = `${latestData["救急車搬入数"]}台`;
         document.querySelector(".dashboard .card:nth-child(3) strong").innerText = `${latestData["入院患者数"]}人`;
