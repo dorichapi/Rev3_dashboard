@@ -1,3 +1,4 @@
+/* ✅ 全体の基本スタイル */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -48,22 +49,35 @@ h1 {
     color: #000;
 }
 
-/* ✅ グラフエリア（3列 × 2行のグリッド） */
+/* ✅ グラフエリアのレイアウト（2列 × 3行） */
 .charts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* ✅ 3列 */
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);  /* ✅ 2列表示 */
+    gap: 10px;                             /* ✅ グラフ間の余白 */
     padding: 10px;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 100%;                       /* ✅ 画面幅いっぱいに表示 */
+    margin: 0 auto;                        /* ✅ 中央揃え */
+    box-sizing: border-box;
 }
 
 /* ✅ グラフのサイズを調整 */
 canvas {
     background: white;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 180px !important;   /* ✅ 高さを縮小 */
-    width: 100% !important;     /* ✅ 幅は自動調整 */
+    padding: 10px;                         /* ✅ 内側余白を確保 */
+    border-radius: 8px;                    /* ✅ 角を丸める */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* ✅ 軽い影を追加 */
+    height: 350px !important;              /* ✅ 高さを拡大 */
+    width: 100% !important;                /* ✅ 幅は親要素にフィット */
+    max-width: 100%;                       /* ✅ 最大幅を親に合わせる */
+    box-sizing: border-box;                /* ✅ パディングとボーダーを含める */
+    margin: 0 auto;                        /* ✅ 中央揃え */
 }
+
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;        /* ✅ モバイル表示で1列に切り替え */
+    }
+    canvas {
+        height: 300px !important;          /* ✅ 高さを少し縮小 */
+    }
+} 
