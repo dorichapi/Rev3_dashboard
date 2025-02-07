@@ -40,10 +40,12 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     const recentData = data.slice(-7);
 
     const canvas = document.getElementById(canvasId);
-    canvas.style.height = "540px";  // 180px × 3倍
-    canvas.style.width = "300%";    // 横幅をさらに拡大
-    canvas.style.padding = "40px";  // 背景との余白をさらに追加
-    canvas.style.backgroundColor = "#ffffff"; // 背景色の明確化
+    canvas.style.height = "600px";  // ✅ グラフの高さをさらに大きく
+    canvas.style.width = "100%";    // ✅ 横幅を画面幅にフィット
+    canvas.style.maxWidth = "1200px"; // ✅ 最大幅を設定
+    canvas.style.margin = "0 auto";  // ✅ 中央揃え
+    canvas.style.padding = "40px";   // ✅ 背景との余白
+    canvas.style.backgroundColor = "#ffffff"; // ✅ 背景色の明確化
 
     new Chart(canvas, {
         type: "line",
@@ -61,6 +63,14 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
         options: {
             responsive: true,
             maintainAspectRatio: false, // ✅ サイズ調整用
+            layout: {
+                padding: {
+                    top: 30,
+                    bottom: 30,
+                    left: 30,
+                    right: 30
+                }
+            },
             plugins: {
                 legend: {
                     labels: {
