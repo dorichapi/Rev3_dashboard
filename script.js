@@ -1,5 +1,5 @@
 // ✅ Google Apps ScriptのURLをここに貼り付け
-const apiUrl = "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec";
+const apiUrl = "https://script.google.com/macros/s/AKfycby4XwDzmcDdVy0odJXbZpf3FApO_99SWYc0Wtg9fvisnz2tQYbGBGZzO6FR9piLAHgk/exec";
 
 // ✅ データ取得 & グラフ表示
 async function fetchData() {
