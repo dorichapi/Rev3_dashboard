@@ -64,6 +64,6 @@ canvas {
     padding: 8px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 180px !important;   /* ✅ 高さを縮小 */
+    height: 250px !important;   /* ✅ 高さを縮小 */
     width: 100% !important;     /* ✅ 幅は自動調整 */
 }
