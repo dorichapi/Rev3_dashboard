@@ -69,16 +69,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             },
             plugins: {
                 legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 64,       // ✅ 凡例のフォントサイズをさらに大きく
-                            weight: 'bold'  // ✅ 太文字
-                        },
-                        color: '#000',       // ✅ 文字色を黒に設定
-                        padding: 20          // ✅ ラベル間の余白
-                    },
-                    position: 'top'          // ✅ 凡例の位置を上に設定
+                    display: false          // ✅ 重複表示を防ぐため凡例を非表示
                 },
                 title: {
                     display: true,
