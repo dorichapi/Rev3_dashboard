@@ -1,76 +1,66 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
     background-color: #f9f9f9;
+    margin: 20px;
 }
 
 h1 {
-    color: #333;
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
 .date-display {
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin: 10px 0;
+    color: #333;
 }
 
-.update-time {
-    font-size: 1em;
+#update-time {
+    font-size: 0.9em;
     color: #666;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .dashboard {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px;
+    margin-bottom: 20px;
 }
 
 .card {
-    background: white;
+    background: #fff;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 180px;
-    text-align: center;
-}
-
-.card h3 {
-    margin: 5px 0;
-    color: #444;
-}
-
-.card strong {
-    font-size: 1.8em;
-    color: #000;
-}
-
-/* ✅ グラフの表示サイズとレイアウト調整 */
-.chart-container {
-    background: #fff;
-    padding: 15px;                       /* ✅ グラフ内部の余白 */
-    margin: 20px;                        /* ✅ グラフ間の余白を確保 */
-    border-radius: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    width: 450px;                        /* ✅ 横幅を1.5倍に拡大 */
-    height: 270px;                       /* ✅ 縦も1.5倍に拡大 */
+    width: 18%;
+    margin: 10px;
 }
 
-/* ✅ グラフのラベルや凡例のフォントサイズ調整 */
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
-/* ✅ グラフタイトルのフォント修正 */
-.chart-title {
-    font-size: 18px;                     /* ✅ タイトルの文字サイズ */
+.title {
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 2em;
     color: #333;
-    text-align: center;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3列表示 */
+    gap: 20px;  /* グラフ間のスペース */
+    padding: 0 20px;
+}
+
+canvas {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 480px !important;  /* ✅ 幅を1.5倍に拡大 */
+    height: 300px !important; /* ✅ 高さも1.5倍に拡大 */
 }
