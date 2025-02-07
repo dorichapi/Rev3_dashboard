@@ -1,0 +1,71 @@
+/* ✅ 全体の基本スタイル */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+.date-display {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #444;
+}
+
+.update-time {
+    font-size: 0.9em;
+    color: #777;
+    margin-left: 10px;
+}
+
+/* ✅ カードのスタイル */
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    width: 22%;
+    min-width: 200px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);  /* ホバー時に少し拡大 */
+}
+
+/* ✅ グラフのレイアウト */
+.charts-container, .bottom-charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.chart {
+    width: 45%;
+    min-width: 300px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ 下段グラフの左寄せ */
+.bottom-charts {
+    justify-content: flex-start;
+}
