@@ -36,13 +36,16 @@ async function fetchData() {
 
 // ✅ グラフ作成関数
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
+    const recentLabels = labels.slice(-7);  // ✅ 直近1週間分のデータ表示
+    const recentData = data.slice(-7);
+
     new Chart(document.getElementById(canvasId), {
         type: "line",
         data: {
-            labels: labels,
+            labels: recentLabels,
             datasets: [{
                 label: label,
-                data: data,
+                data: recentData,
                 borderColor: color,
                 backgroundColor: color,
                 fill: false,
@@ -51,18 +54,21 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false, // ✅ サイズ調整用
             plugins: {
                 legend: {
                     labels: {
                         font: {
-                            size: 24  // ✅ フォントサイズを2倍に
+                            size: 48,  // ✅ フォントサイズ4倍に
+                            weight: 'bold'  // ✅ 太文字
                         }
                     }
                 },
                 title: {
                     display: true,
                     font: {
-                        size: 24  // ✅ タイトルのフォントサイズも調整
+                        size: 48,  // ✅ タイトルのフォントサイズも4倍に
+                        weight: 'bold'  // ✅ 太文字
                     }
                 }
             },
@@ -74,25 +80,33 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                         display: true,
                         text: unit,
                         font: {
-                            size: 24  // ✅ Y軸のラベルフォントサイズを2倍に
+                            size: 48,  // ✅ Y軸のラベルフォントサイズ4倍に
+                            weight: 'bold'  // ✅ 太文字
                         }
                     },
                     ticks: {
                         font: {
-                            size: 24  // ✅ Y軸の目盛りフォントサイズを2倍に
+                            size: 48,  // ✅ Y軸の目盛りフォントサイズ4倍に
+                            weight: 'bold'  // ✅ 太文字
                         }
                     }
                 },
                 x: {
                     ticks: {
                         font: {
-                            size: 24  // ✅ X軸の目盛りフォントサイズを2倍に
+                            size: 48,  // ✅ X軸の目盛りフォントサイズ4倍に
+                            weight: 'bold'  // ✅ 太文字
                         }
                     }
                 }
             }
         }
     });
+
+    // ✅ グラフサイズ調整
+    const canvas = document.getElementById(canvasId);
+    canvas.style.height = "270px";  // 180px × 1.5倍
+    canvas.style.width = "150%";   // 横幅を1.5倍
 }
 
 // ✅ 日付フォーマット関数（例: 2025年2月7日(金)）
