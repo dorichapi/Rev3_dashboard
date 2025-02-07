@@ -63,7 +63,7 @@ h1 {
     box-sizing: border-box;
 }
 
-/* ✅ グラフのサイズを調整 */
+/* ✅ グラフのサイズとフォントを調整 */
 canvas {
     background: white;
     padding: 10px;                          /* ✅ 内側余白を確保 */
@@ -74,7 +74,12 @@ canvas {
     max-width: 100%;                        /* ✅ 最大幅を親に合わせる */
     box-sizing: border-box;                 /* ✅ パディングとボーダーを含める */
     margin: 0 auto;                         /* ✅ 中央揃え */
-    font-size: 3em !important;              /* ✅ グラフのフォントサイズを3倍に拡大 */
+    font-size: 4em !important;              /* ✅ グラフのフォントサイズをさらに大きく拡大 */
+}
+
+/* ✅ グラフ内のラベル、目盛り、凡例のフォントサイズ調整 */
+.chartjs-size-monitor, .chartjs-render-monitor {
+    font-size: 4em !important;              /* ✅ ラベル、目盛り、凡例のフォントサイズを大きく */
 }
 
 @media (max-width: 1024px) {
