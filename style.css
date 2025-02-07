@@ -9,18 +9,21 @@ body {
 h1 {
     color: #333;
     margin-bottom: 10px;
-    font-size: 1.5em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 36px; /* ✅ タイトルのフォントサイズを大きく */
+    font-weight: bold;
 }
 
 .date-display {
-    font-size: 1.2em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 28px; /* ✅ 更新日時のフォントサイズを大きく */
     margin: 10px 0;
+    font-weight: bold;
 }
 
 .update-time {
-    font-size: 0.9em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 24px; /* ✅ 更新時刻のフォントサイズを大きく */
     color: #666;
     margin-left: 10px;
+    font-weight: bold;
 }
 
 .dashboard {
@@ -36,66 +39,61 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 180px;
+    width: 200px; /* ✅ カードの幅を調整 */
     text-align: center;
+    font-size: 24px; /* ✅ カード全体のフォントサイズを大きく */
 }
 
 .card h3 {
     margin: 5px 0;
     color: #444;
-    font-size: 1em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 28px; /* ✅ 項目タイトルのフォントサイズを大きく */
+    font-weight: bold;
 }
 
 .card strong {
-    font-size: 1.5em; /* ✅ 元のフォントサイズに戻す */
+    font-size: 32px; /* ✅ 数値データのフォントサイズを大きく */
     color: #000;
+    font-weight: bold;
 }
 
-/* ✅ グラフエリアのレイアウト（2行 × 3列） */
+/* ✅ グラフエリアのレイアウト */
 .charts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* ✅ 3列表示 */
-    grid-template-rows: repeat(2, auto);    /* ✅ 2行表示 */
-    gap: 15px;                              /* ✅ グラフ間の余白 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 10px;
-    max-width: 100%;                        /* ✅ 画面幅いっぱいに表示 */
-    margin: 0 auto;                         /* ✅ 中央揃え */
-    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-/* ✅ グラフのサイズとフォントを調整 */
+/* ✅ グラフのスタイル調整 */
 canvas {
     background: white;
-    padding: 10px;                          /* ✅ 内側余白を確保 */
-    border-radius: 8px;                     /* ✅ 角を丸める */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* ✅ 軽い影を追加 */
-    height: 350px !important;               /* ✅ 高さを適切に調整 */
-    width: 100% !important;                 /* ✅ 幅は親要素にフィット */
-    max-width: 100%;                        /* ✅ 最大幅を親に合わせる */
-    box-sizing: border-box;                 /* ✅ パディングとボーダーを含める */
-    margin: 0 auto;                         /* ✅ 中央揃え */
-    font-size: 4em !important;              /* ✅ グラフのフォントサイズをさらに大きく拡大 */
-}
-
-/* ✅ グラフ内のラベル、目盛り、凡例のフォントサイズ調整 */
-.chartjs-size-monitor, .chartjs-render-monitor {
-    font-size: 4em !important;              /* ✅ ラベル、目盛り、凡例のフォントサイズを大きく */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    height: 350px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-size: 24px !important; /* ✅ グラフ内フォントサイズを大きく */
 }
 
 @media (max-width: 1024px) {
     .charts-grid {
-        grid-template-columns: repeat(2, 1fr); /* ✅ タブレット表示では2列に */
+        grid-template-columns: repeat(2, 1fr);
     }
     canvas {
-        height: 300px !important;              /* ✅ 高さを調整 */
+        height: 300px !important;
     }
 }
 
 @media (max-width: 768px) {
     .charts-grid {
-        grid-template-columns: 1fr;            /* ✅ モバイル表示で1列に切り替え */
+        grid-template-columns: 1fr;
     }
     canvas {
-        height: 250px !important;              /* ✅ 高さをさらに縮小 */
+        height: 250px !important;
     }
 }
