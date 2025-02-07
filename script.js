@@ -1,18 +1,42 @@
 // ✅ Google Apps ScriptのURLをここに貼り付け
 const apiUrl = "https://script.google.com/macros/s/AKfycby4XwDzmcDdVy0odJXbZpf3FApO_99SWYc0Wtg9fvisnz2tQYbGBGZzO6FR9piLAHgk/exec";
 
-// ✅ データ取得 & グラフ描画
+// ✅ データ取得とグラフ描画
 async function fetchData() {
     try {
         const response = await fetch(apiUrl);
         const result = await response.json();
-        const latestData = result.data[result.data.length - 1];
+        console.log("✅ データ取得成功:", result);  // デバッグ用
 
-        // ✅ 最新7日間のデータだけ取得
+        const latestData = result.data[result.data.length - 1] || {};
         const last7DaysData = result.data.slice(-7);
+
+        // ✅ 日付と更新時刻の表示
+        document.getElementById("latest-date").innerText = `日付: ${formatDate(latestData["日付"]) || "--"}`;
+        document.getElementById("update-time").innerText = `更新時刻: ${formatTime(result.lastEditTime) || "--"}`;
+
+        // ✅ 各項目のデータ表示（null対策）
+        document.getElementById("bed-usage").querySelector(".value").innerText = 
+            latestData["病床利用率 (%)"] !== undefined ? `${(latestData["病床利用率 (%)"] * 100).toFixed(1)}%` : "--%";
+
+        document.getElementById("ambulance").querySelector(".value").innerText = 
+            latestData["救急車搬入数"] || "--台";
+
+        document.getElementById("inpatients").querySelector(".value").innerText = 
+            latestData["入院患者数"] || "--人";
+
+        document.getElementById("discharges").querySelector(".value").innerText = 
+            latestData["退院予定数"] || "--人";
+
+        document.getElementById("general-ward").querySelector(".value").innerText = 
+            `${latestData["一般病棟在院数"] || "--"}/218 床`;
+
+        document.getElementById("icu").querySelector(".value").innerText = 
+            `${latestData["集中治療室在院数"] || "--"}/16 床`;
+
+        // ✅ グラフ描画
         const labels = last7DaysData.map(item => formatDateForChart(item["日付"]));
 
-        // ✅ グラフ表示
         createChart("bedChart", "病床利用率 (%)", labels, last7DaysData.map(item => item["病床利用率 (%)"] * 100), "blue", "％", 110);
         createChart("ambulanceChart", "救急車搬入数", labels, last7DaysData.map(item => item["救急車搬入数"]), "red", "台");
         createChart("inpatientsChart", "入院患者数", labels, last7DaysData.map(item => item["入院患者数"]), "green", "人");
@@ -25,7 +49,7 @@ async function fetchData() {
     }
 }
 
-// ✅ グラフ描画関数（フォントサイズの調整を追加）
+// ✅ グラフ描画関数（フォントとレイアウト修正）
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     new Chart(document.getElementById(canvasId), {
         type: "line",
@@ -37,9 +61,9 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 borderColor: color,
                 backgroundColor: color,
                 fill: false,
-                tension: 0.3,
-                pointRadius: 4,                // ✅ データポイントのサイズを拡大
-                pointHoverRadius: 6            // ✅ ホバー時に大きく
+                tension: 0.4,
+                pointRadius: 5,
+                pointHoverRadius: 7
             }]
         },
         options: {
@@ -49,7 +73,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 x: {
                     ticks: {
                         font: {
-                            size: 14             // ✅ 横軸の目盛りフォントサイズ
+                            size: 14                      // ✅ 横軸のフォントサイズ
                         }
                     }
                 },
@@ -60,12 +84,12 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                         display: true,
                         text: unit,
                         font: {
-                            size: 16             // ✅ Y軸ラベルのフォントサイズ
+                            size: 16                      // ✅ Y軸タイトルのフォントサイズ
                         }
                     },
                     ticks: {
                         font: {
-                            size: 14             // ✅ 縦軸の目盛りフォントサイズ
+                            size: 14                      // ✅ 縦軸の目盛りフォントサイズ
                         }
                     }
                 }
@@ -74,7 +98,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 legend: {
                     labels: {
                         font: {
-                            size: 16             // ✅ 凡例（ラベル）のフォントサイズ
+                            size: 16                      // ✅ 凡例（ラベル）のフォントサイズ
                         }
                     }
                 }
@@ -83,11 +107,10 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     });
 }
 
-// ✅ グラフ用の日付フォーマット（例: 2/7）
+// ✅ 日付フォーマット（例: 2/7）
 function formatDateForChart(dateString) {
     const date = new Date(dateString);
     return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
-// ✅ 初期化
 fetchData();
