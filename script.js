@@ -71,9 +71,16 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 legend: {
                     labels: {
                         font: {
-                            size: 18,       // ✅ フォントサイズ調整
+                            size: 36,       // ✅ 凡例のフォントサイズを大きく
                             weight: 'bold'  // ✅ 太文字
                         }
+                    }
+                },
+                title: {
+                    display: true,
+                    font: {
+                        size: 36,           // ✅ タイトルのフォントサイズを大きく
+                        weight: 'bold'     // ✅ 太文字
                     }
                 }
             },
@@ -85,16 +92,22 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                         display: true,
                         text: unit,
                         font: {
-                            size: 18,
-                            weight: 'bold'
+                            size: 36,       // ✅ Y軸のラベルフォントサイズを大きく
+                            weight: 'bold'  // ✅ 太文字
+                        }
+                    },
+                    ticks: {
+                        font: {
+                            size: 36,       // ✅ Y軸の目盛りフォントサイズを大きく
+                            weight: 'bold'  // ✅ 太文字
                         }
                     }
                 },
                 x: {
                     ticks: {
                         font: {
-                            size: 16,
-                            weight: 'bold'
+                            size: 36,       // ✅ X軸の目盛りフォントサイズを大きく
+                            weight: 'bold'  // ✅ 太文字
                         }
                     }
                 }
