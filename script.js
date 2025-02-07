@@ -68,13 +68,13 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             },
             plugins: {
                 legend: {
-                    display: false          // ✅ 凡例を完全に非表示
+                    display: false          // ✅ 凡例を完全に非表示に設定
                 },
                 title: {
                     display: true,
                     text: label,            // ✅ タイトルを表示してラベルとして使用
                     font: {
-                        size: 36,           // ✅ タイトルのフォントサイズを大きく
+                        size: 48,           // ✅ タイトルのフォントサイズをさらに大きく
                         weight: 'bold'     // ✅ 太文字
                     }
                 }
