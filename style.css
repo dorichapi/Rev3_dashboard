@@ -74,6 +74,7 @@ canvas {
     max-width: 100%;                        /* ✅ 最大幅を親に合わせる */
     box-sizing: border-box;                 /* ✅ パディングとボーダーを含める */
     margin: 0 auto;                         /* ✅ 中央揃え */
+    font-size: 3em !important;              /* ✅ グラフのフォントサイズを3倍に拡大 */
 }
 
 @media (max-width: 1024px) {
