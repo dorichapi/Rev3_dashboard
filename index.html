@@ -4,43 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>病院経営ダッシュボード</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">  <!-- ✅ CSSリンク -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- ✅ Chart.js 読み込み -->
 </head>
 <body>
 
     <h1>病院経営ダッシュボード</h1>
-    <div class="date-display" id="latest-date">日付: -- <span id="update-time">更新時刻: --:--</span></div>
+    <div class="date-display" id="latest-date">日付: -- <span class="update-time" id="update-time">更新時刻: --:--</span></div>  <!-- ✅ 日付・更新時刻 -->
 
     <div class="dashboard">
-        <div class="card" id="bed-usage">
-            <div class="title">病床利用率</div>
-            <div class="value">--%</div>
-        </div>
-        <div class="card" id="ambulance">
-            <div class="title">救急車搬入</div>
-            <div class="value">--台</div>
-        </div>
-        <div class="card" id="inpatients">
-            <div class="title">入院患者</div>
-            <div class="value">--人</div>
-        </div>
-        <div class="card" id="discharges">
-            <div class="title">退院予定</div>
-            <div class="value">--人</div>
-        </div>
-        <div class="card" id="general-ward">
-            <div class="title">一般病棟在院数</div>
-            <div class="value">--/218 床</div>
-        </div>
-        <div class="card" id="icu">
-            <div class="title">集中治療室在院数</div>
-            <div class="value">--/16 床</div>
-        </div>
+        <div class="card"><h3>病床利用率</h3><strong>--%</strong></div>
+        <div class="card"><h3>救急車搬入</h3><strong>--台</strong></div>
+        <div class="card"><h3>入院患者</h3><strong>--人</strong></div>
+        <div class="card"><h3>退院予定</h3><strong>--人</strong></div>
+        <div class="card"><h3>一般病棟在院数</h3><strong>--/218 床</strong></div>
+        <div class="card"><h3>集中治療室在院数</h3><strong>--/16 床</strong></div>
     </div>
 
-    <!-- ✅ グラフエリア -->
-    <div class="chart-grid">
+    <!-- ✅ グラフエリア（3列 × 2行） -->
+    <div class="charts-grid">
         <canvas id="bedChart"></canvas>
         <canvas id="ambulanceChart"></canvas>
         <canvas id="inpatientsChart"></canvas>
@@ -49,6 +31,6 @@
         <canvas id="icuChart"></canvas>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script>  <!-- ✅ JavaScriptリンク -->
 </body>
 </html>
