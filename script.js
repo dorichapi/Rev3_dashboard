@@ -51,13 +51,43 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
         },
         options: {
             responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 24  // ✅ フォントサイズを2倍に
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    font: {
+                        size: 24  // ✅ タイトルのフォントサイズも調整
+                    }
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
                     max: maxY,
                     title: {
                         display: true,
-                        text: unit
+                        text: unit,
+                        font: {
+                            size: 24  // ✅ Y軸のラベルフォントサイズを2倍に
+                        }
+                    },
+                    ticks: {
+                        font: {
+                            size: 24  // ✅ Y軸の目盛りフォントサイズを2倍に
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 24  // ✅ X軸の目盛りフォントサイズを2倍に
+                        }
                     }
                 }
             }
