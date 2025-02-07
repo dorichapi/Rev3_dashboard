@@ -4,37 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>病院経営ダッシュボード</title>
-    <link rel="stylesheet" href="style.css">  <!-- ✅ 外部CSSの読み込み -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">  <!-- ✅ CSSリンク -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- ✅ Chart.js 読み込み -->
 </head>
 <body>
 
     <h1>病院経営ダッシュボード</h1>
-    <div class="date-display" id="latest-date">日付: 2月7日 <span class="update-time" id="update-time">更新: 13:58</span></div>
+    <div class="date-display" id="latest-date">日付: -- <span class="update-time" id="update-time">更新: --:--</span></div>
 
     <div class="dashboard">
-        <div class="card">病床利用率<br><strong>99.5%</strong></div>
-        <div class="card">救急車搬入<br><strong>1台</strong></div>
-        <div class="card">入院患者<br><strong>7人</strong></div>
-        <div class="card">退院予定<br><strong>20人</strong></div>
-        <div class="card">一般病棟在院数<br><strong>208/218 床</strong></div>
-        <div class="card">集中治療室在院数<br><strong>9/16 床</strong></div>
+        <div class="card"><h3>病床利用率</h3><strong>--%</strong></div>
+        <div class="card"><h3>救急車搬入</h3><strong>--台</strong></div>
+        <div class="card"><h3>入院患者</h3><strong>--人</strong></div>
+        <div class="card"><h3>退院予定</h3><strong>--人</strong></div>
+        <div class="card"><h3>一般病棟在院数</h3><strong>--/218 床</strong></div>
+        <div class="card"><h3>集中治療室在院数</h3><strong>--/16 床</strong></div>
     </div>
 
-    <!-- ✅ 上段グラフ -->
-    <div class="charts-container">
-        <canvas class="chart" id="bedChart"></canvas>
-        <canvas class="chart" id="ambulanceChart"></canvas>
-        <canvas class="chart" id="inpatientsChart"></canvas>
-        <canvas class="chart" id="dischargesChart"></canvas>
+    <div class="charts-grid">
+        <canvas id="bedChart"></canvas>
+        <canvas id="ambulanceChart"></canvas>
+        <canvas id="inpatientsChart"></canvas>
+        <canvas id="dischargesChart"></canvas>
+        <canvas id="generalWardChart"></canvas>
+        <canvas id="icuChart"></canvas>
     </div>
 
-    <!-- ✅ 下段グラフ（左寄せ） -->
-    <div class="bottom-charts">
-        <canvas class="chart" id="generalWardChart"></canvas>
-        <canvas class="chart" id="icuChart"></canvas>
-    </div>
-
-    <script src="script.js"></script>  <!-- ✅ JavaScript の読み込み -->
+    <script src="script.js"></script>  <!-- ✅ JavaScriptリンク -->
 </body>
 </html>
