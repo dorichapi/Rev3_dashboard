@@ -61,6 +61,6 @@ canvas {
     border-radius: 10px;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    width: 480px !important;  /* ✅ 幅を1.5倍に拡大 */
-    height: 300px !important; /* ✅ 高さも1.5倍に拡大 */
+    width: 450px !important;  /* ✅ 安定したサイズ */
+    height: 280px !important; /* ✅ 縦横バランスの取れた表示 */
 }
