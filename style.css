@@ -52,18 +52,18 @@ h1 {
 .charts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* ✅ 3列 */
-    gap: 10px;
+    gap: 15px;  /* ✅ グラフ間の余白を少し広げる */
     padding: 10px;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* ✅ グラフのサイズを調整 */
+/* ✅ グラフのサイズを1.5倍に拡大 */
 canvas {
     background: white;
     padding: 8px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 250px !important;   /* ✅ 高さを縮小 */
+    height: 270px !important;   /* ✅ 高さを180px → 270pxに拡大 */
     width: 100% !important;     /* ✅ 幅は自動調整 */
 }
