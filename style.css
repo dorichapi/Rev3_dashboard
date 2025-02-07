@@ -52,17 +52,18 @@ h1 {
 .charts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* ✅ 3列 */
-    gap: 15px;
+    gap: 10px;
     padding: 10px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
+/* ✅ グラフのサイズを調整 */
 canvas {
     background: white;
-    padding: 10px;
+    padding: 8px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 250px !important;   /* ✅ グラフの高さを調整 */
-    width: 100% !important;     /* ✅ 幅を100%にフィット */
+    height: 180px !important;   /* ✅ 高さを縮小 */
+    width: 100% !important;     /* ✅ 幅は自動調整 */
 }
