@@ -39,7 +39,13 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     const recentLabels = labels.slice(-7);  // ✅ 直近1週間分のデータ表示
     const recentData = data.slice(-7);
 
-    new Chart(document.getElementById(canvasId), {
+    const canvas = document.getElementById(canvasId);
+    canvas.style.height = "540px";  // 180px × 3倍
+    canvas.style.width = "300%";    // 横幅をさらに拡大
+    canvas.style.padding = "40px";  // 背景との余白をさらに追加
+    canvas.style.backgroundColor = "#ffffff"; // 背景色の明確化
+
+    new Chart(canvas, {
         type: "line",
         data: {
             labels: recentLabels,
@@ -102,11 +108,6 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             }
         }
     });
-
-    // ✅ グラフサイズ調整
-    const canvas = document.getElementById(canvasId);
-    canvas.style.height = "270px";  // 180px × 1.5倍
-    canvas.style.width = "150%";   // 横幅を1.5倍
 }
 
 // ✅ 日付フォーマット関数（例: 2025年2月7日(金)）
