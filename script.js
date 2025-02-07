@@ -8,14 +8,14 @@ async function fetchData() {
         const result = await response.json();
         const latestData = result.data[result.data.length - 1];
 
-        // ✅ 日付と更新時刻の表示
+        // ✅ 日付とスプレッドシートの更新時刻を表示
         const dateElement = document.getElementById("latest-date");
         dateElement.innerHTML = `${formatDate(latestData["日付"])} <span class="update-time">更新時刻：${formatTime(result.lastEditTime)}</span>`;
-        dateElement.style.fontSize = "32px"; // ✅ 日付と更新時刻のフォントサイズを大きく
+        dateElement.style.fontSize = "32px"; // ✅ フォントサイズを大きく
 
         // ✅ データの表示
         document.querySelectorAll(".dashboard .card").forEach(card => {
-            card.style.fontSize = "28px"; // ✅ カード内のフォントサイズを大きく
+            card.style.fontSize = "28px";
         });
 
         document.querySelector(".dashboard .card:nth-child(1) strong").innerText = `${(latestData["病床利用率 (%)"] * 100).toFixed(1)}%`;
@@ -41,17 +41,17 @@ async function fetchData() {
 
 // ✅ グラフ作成関数
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
-    const recentLabels = labels.slice(-7);  // ✅ 直近1週間分のデータ表示
+    const recentLabels = labels.slice(-7);
     const recentData = data.slice(-7);
 
     const canvas = document.getElementById(canvasId);
-    canvas.style.height = "350px";         // ✅ 高さを350pxに固定
-    canvas.style.width = "100%";           // ✅ 横幅は親要素にフィット
+    canvas.style.height = "350px";
+    canvas.style.width = "100%";
     canvas.style.backgroundColor = "#ffffff";
-    canvas.style.margin = "10px auto";     // ✅ 上下余白と中央揃え
-    canvas.style.padding = "10px";         // ✅ 内側余白
-    canvas.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)"; // ✅ 軽いシャドウ
-    canvas.style.borderRadius = "8px";     // ✅ 角丸デザイン
+    canvas.style.margin = "10px auto";
+    canvas.style.padding = "10px";
+    canvas.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+    canvas.style.borderRadius = "8px";
 
     new Chart(canvas, {
         type: "line",
@@ -67,20 +67,20 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,     // ✅ サイズ調整を柔軟に
+            maintainAspectRatio: false,
             layout: {
-                padding: 10                // ✅ 内部余白を最小限に
+                padding: 10
             },
             plugins: {
                 legend: {
-                    display: false          // ✅ 凡例を完全に非表示に設定
+                    display: false
                 },
                 title: {
                     display: true,
-                    text: label,            // ✅ タイトルを表示してラベルとして使用
+                    text: label,
                     font: {
-                        size: 48,           // ✅ タイトルのフォントサイズをさらに大きく
-                        weight: 'bold'     // ✅ 太文字
+                        size: 48,
+                        weight: 'bold'
                     }
                 }
             },
@@ -92,22 +92,22 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                         display: true,
                         text: unit,
                         font: {
-                            size: 36,       // ✅ Y軸のラベルフォントサイズを大きく
-                            weight: 'bold'  // ✅ 太文字
+                            size: 36,
+                            weight: 'bold'
                         }
                     },
                     ticks: {
                         font: {
-                            size: 36,       // ✅ Y軸の目盛りフォントサイズを大きく
-                            weight: 'bold'  // ✅ 太文字
+                            size: 36,
+                            weight: 'bold'
                         }
                     }
                 },
                 x: {
                     ticks: {
                         font: {
-                            size: 36,       // ✅ X軸の目盛りフォントサイズを大きく
-                            weight: 'bold'  // ✅ 太文字
+                            size: 36,
+                            weight: 'bold'
                         }
                     }
                 }
@@ -116,7 +116,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     });
 }
 
-// ✅ 日付フォーマット関数（例: 2025年2月7日(金)）
+// ✅ 日付フォーマット関数
 function formatDate(dateString) {
     const date = new Date(dateString);
     const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
@@ -127,7 +127,7 @@ function formatDate(dateString) {
     return `${year}年${month}月${day}日(${dayOfWeek})`;
 }
 
-// ✅ 時刻フォーマット関数（例: 18:20）
+// ✅ 時刻フォーマット関数
 function formatTime(dateString) {
     const date = new Date(dateString);
     const hours = date.getHours().toString().padStart(2, '0');
@@ -135,7 +135,7 @@ function formatTime(dateString) {
     return `${hours}:${minutes}`;
 }
 
-// ✅ グラフ用の日付フォーマット（例: 2/7）
+// ✅ グラフ用の日付フォーマット
 function formatDateForChart(dateString) {
     const date = new Date(dateString);
     return `${date.getMonth() + 1}/${date.getDate()}`;
