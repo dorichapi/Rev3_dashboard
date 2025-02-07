@@ -9,8 +9,8 @@ async function fetchData() {
         const latestData = result.data[result.data.length - 1];
 
         // ✅ 日付と更新時刻の表示
-        document.getElementById("latest-date").innerHTML = `日付: ${formatDate(latestData["日付"])} 
-            <span class="update-time">更新: ${formatTime(result.lastEditTime)}</span>`;
+        document.getElementById("latest-date").innerHTML = `${formatDate(latestData["日付"])} 
+            <span class="update-time">更新時刻：${formatTime(result.lastEditTime)}</span>`;
 
         // ✅ データの表示
         document.querySelector(".dashboard .card:nth-child(1) strong").innerText = `${(latestData["病床利用率 (%)"] * 100).toFixed(1)}%`;
@@ -21,7 +21,7 @@ async function fetchData() {
         document.querySelector(".dashboard .card:nth-child(6) strong").innerText = `${latestData["集中治療室在院数"]}/16 床`;
 
         // ✅ グラフ描画
-        const labels = result.data.map(item => formatDate(item["日付"]));
+        const labels = result.data.map(item => formatDateForChart(item["日付"]));
         createChart("bedChart", "病床利用率 (%)", labels, result.data.map(item => item["病床利用率 (%)"] * 100), "blue", "％", 110);
         createChart("ambulanceChart", "救急車搬入数", labels, result.data.map(item => item["救急車搬入数"]), "red", "台");
         createChart("inpatientsChart", "入院患者数", labels, result.data.map(item => item["入院患者数"]), "green", "人");
@@ -65,18 +65,29 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     });
 }
 
-// ✅ 日付フォーマット関数
-function formatDate(date) {
-    const d = new Date(date);
-    return `${d.getMonth() + 1}/${d.getDate()}`;
+// ✅ 日付フォーマット関数（例: 2025年2月7日(金)）
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const dayOfWeek = weekdays[date.getDay()];
+    return `${year}年${month}月${day}日(${dayOfWeek})`;
 }
 
-// ✅ 時刻フォーマット関数
+// ✅ 時刻フォーマット関数（例: 18:20）
 function formatTime(dateString) {
     const date = new Date(dateString);
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
+}
+
+// ✅ グラフ用の日付フォーマット（例: 2/7）
+function formatDateForChart(dateString) {
+    const date = new Date(dateString);
+    return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 // ✅ 初期化
