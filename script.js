@@ -40,12 +40,14 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     const recentData = data.slice(-7);
 
     const canvas = document.getElementById(canvasId);
-    canvas.style.height = "600px";  // ✅ グラフの高さをさらに大きく
-    canvas.style.width = "100%";    // ✅ 横幅を画面幅にフィット
-    canvas.style.maxWidth = "1200px"; // ✅ 最大幅を設定
-    canvas.style.margin = "0 auto";  // ✅ 中央揃え
-    canvas.style.padding = "40px";   // ✅ 背景との余白
+    canvas.style.height = "400px";  // ✅ グラフの高さを適正化
+    canvas.style.width = "100%";    // ✅ 横幅を親要素にフィット
+    canvas.style.maxWidth = "600px"; // ✅ 最大幅を設定
+    canvas.style.margin = "20px auto";  // ✅ 上下の余白と中央揃え
+    canvas.style.padding = "20px";   // ✅ 背景との余白
     canvas.style.backgroundColor = "#ffffff"; // ✅ 背景色の明確化
+    canvas.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)"; // ✅ 軽いシャドウ追加
+    canvas.style.borderRadius = "8px"; // ✅ 角を丸める
 
     new Chart(canvas, {
         type: "line",
@@ -65,17 +67,17 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             maintainAspectRatio: false, // ✅ サイズ調整用
             layout: {
                 padding: {
-                    top: 30,
-                    bottom: 30,
-                    left: 30,
-                    right: 30
+                    top: 20,
+                    bottom: 20,
+                    left: 20,
+                    right: 20
                 }
             },
             plugins: {
                 legend: {
                     labels: {
                         font: {
-                            size: 48,  // ✅ フォントサイズ4倍に
+                            size: 24,  // ✅ フォントサイズ調整
                             weight: 'bold'  // ✅ 太文字
                         }
                     }
@@ -83,7 +85,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 title: {
                     display: true,
                     font: {
-                        size: 48,  // ✅ タイトルのフォントサイズも4倍に
+                        size: 24,  // ✅ タイトルのフォントサイズ調整
                         weight: 'bold'  // ✅ 太文字
                     }
                 }
@@ -96,13 +98,13 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                         display: true,
                         text: unit,
                         font: {
-                            size: 48,  // ✅ Y軸のラベルフォントサイズ4倍に
+                            size: 24,  // ✅ Y軸のラベルフォントサイズ調整
                             weight: 'bold'  // ✅ 太文字
                         }
                     },
                     ticks: {
                         font: {
-                            size: 48,  // ✅ Y軸の目盛りフォントサイズ4倍に
+                            size: 20,  // ✅ Y軸の目盛りフォントサイズ調整
                             weight: 'bold'  // ✅ 太文字
                         }
                     }
@@ -110,7 +112,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 x: {
                     ticks: {
                         font: {
-                            size: 48,  // ✅ X軸の目盛りフォントサイズ4倍に
+                            size: 20,  // ✅ X軸の目盛りフォントサイズ調整
                             weight: 'bold'  // ✅ 太文字
                         }
                     }
