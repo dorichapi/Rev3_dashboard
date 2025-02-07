@@ -64,6 +64,8 @@ canvas {
     padding: 8px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 270px !important;   /* ✅ 高さを180px → 270pxに拡大 */
-    width: 100% !important;     /* ✅ 幅は自動調整 */
+    height: 180px !important;        /* ✅ 高さはそのまま */
+    width: 150% !important;          /* ✅ 横幅を1.5倍に拡大 */
+    max-width: 450px !important;     /* ✅ 最大幅を450pxに制限（1.5倍基準） */
+    margin: 0 auto;
 }
