@@ -49,11 +49,12 @@ h1 {
     color: #000;
 }
 
-/* ✅ グラフエリアのレイアウト（3列 × 2行） */
+/* ✅ グラフエリアのレイアウト（2行 × 3列） */
 .charts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* ✅ 3列表示 */
-    gap: 10px;                              /* ✅ グラフ間の余白 */
+    grid-template-rows: repeat(2, auto);    /* ✅ 2行表示 */
+    gap: 15px;                              /* ✅ グラフ間の余白 */
     padding: 10px;
     max-width: 100%;                        /* ✅ 画面幅いっぱいに表示 */
     margin: 0 auto;                         /* ✅ 中央揃え */
@@ -66,7 +67,7 @@ canvas {
     padding: 10px;                          /* ✅ 内側余白を確保 */
     border-radius: 8px;                     /* ✅ 角を丸める */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* ✅ 軽い影を追加 */
-    height: 300px !important;               /* ✅ 高さを画面に合わせて調整 */
+    height: 350px !important;               /* ✅ 高さを適切に調整 */
     width: 100% !important;                 /* ✅ 幅は親要素にフィット */
     max-width: 100%;                        /* ✅ 最大幅を親に合わせる */
     box-sizing: border-box;                 /* ✅ パディングとボーダーを含める */
@@ -78,7 +79,7 @@ canvas {
         grid-template-columns: repeat(2, 1fr); /* ✅ タブレット表示では2列に */
     }
     canvas {
-        height: 280px !important;              /* ✅ 高さを調整 */
+        height: 300px !important;              /* ✅ 高さを調整 */
     }
 }
 
