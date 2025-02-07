@@ -48,24 +48,29 @@ h1 {
     color: #000;
 }
 
-/* ✅ グラフエリア（3列 × 2行のグリッド） */
-.charts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* ✅ 3列 */
-    gap: 15px;  /* ✅ グラフ間の余白を少し広げる */
-    padding: 10px;
-    max-width: 1100px;
-    margin: 0 auto;
+/* ✅ グラフの表示サイズとレイアウト調整 */
+.chart-container {
+    background: #fff;
+    padding: 15px;                       /* ✅ グラフ内部の余白 */
+    margin: 20px;                        /* ✅ グラフ間の余白を確保 */
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 450px;                        /* ✅ 横幅を1.5倍に拡大 */
+    height: 270px;                       /* ✅ 縦も1.5倍に拡大 */
 }
 
-/* ✅ グラフのサイズを1.5倍に拡大 */
+/* ✅ グラフのラベルや凡例のフォントサイズ調整 */
 canvas {
-    background: white;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    height: 180px !important;        /* ✅ 高さはそのまま */
-    width: 150% !important;          /* ✅ 横幅を1.5倍に拡大 */
-    max-width: 450px !important;     /* ✅ 最大幅を450pxに制限（1.5倍基準） */
-    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ✅ グラフタイトルのフォント修正 */
+.chart-title {
+    font-size: 18px;                     /* ✅ タイトルの文字サイズ */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
 }
