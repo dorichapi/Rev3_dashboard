@@ -38,18 +38,14 @@
 
     <script src="script.js"></script>
     <script>
-        const chartInstances = {}; // チャートインスタンスを保持するオブジェクト
+        const chartInstances = {};
 
         async function fetchSpreadsheetData() {
             try {
                 const response = await fetch('https://script.google.com/macros/s/AKfycbzMSwzKY50_gQYf1i1uG0DE-NZZVC9fkVtPnwVKaY64QXPHNGw4exHntzuLv-qXmQnc/exec');
-                console.log('レスポンスステータス:', response.status);
-
                 if (!response.ok) throw new Error(`ネットワークエラー: ${response.status}`);
 
                 const data = await response.json();
-                console.log('取得したデータ:', data);
-
                 const table = document.getElementById('surgery-table');
                 table.innerHTML = '';
 
@@ -74,40 +70,54 @@
             fetchSpreadsheetData();
         });
 
-        function createChart(canvasId, data) {
+        function createChart(canvasId, label, data, color) {
             const ctx = document.getElementById(canvasId).getContext('2d');
 
             if (chartInstances[canvasId]) {
-                chartInstances[canvasId].destroy(); // 既存チャートを破棄
+                chartInstances[canvasId].destroy();
             }
 
             chartInstances[canvasId] = new Chart(ctx, {
                 type: 'line',
-                data: data,
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月'],
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderColor: color,
+                        backgroundColor: color,
+                        fill: false,
+                        tension: 0.4
+                    }]
+                },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: label,
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         }
 
         function fetchData() {
-            const dummyData = {
-                labels: ['1月', '2月', '3月', '4月', '5月'],
-                datasets: [{
-                    label: '例のデータ',
-                    data: [10, 20, 15, 30, 25],
-                    borderColor: 'blue',
-                    fill: false
-                }]
-            };
-
-            createChart('bedChart', dummyData);
-            createChart('ambulanceChart', dummyData);
-            createChart('inpatientsChart', dummyData);
-            createChart('dischargesChart', dummyData);
-            createChart('generalWardChart', dummyData);
-            createChart('icuChart', dummyData);
+            createChart('bedChart', '病床利用率 (%)', [75, 80, 78, 85, 90], 'blue');
+            createChart('ambulanceChart', '救急車搬入数', [30, 45, 50, 60, 55], 'red');
+            createChart('inpatientsChart', '入院患者数', [120, 130, 125, 140, 135], 'green');
+            createChart('dischargesChart', '退院予定数', [20, 25, 22, 30, 28], 'orange');
+            createChart('generalWardChart', '一般病棟在院数', [200, 210, 205, 215, 220], 'purple');
+            createChart('icuChart', '集中治療室在院数', [10, 12, 11, 13, 14], 'teal');
         }
 
         fetchData();
