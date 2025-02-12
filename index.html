@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://dorichapi.github.io;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>病院経営ダッシュボード</title>
     <link rel="stylesheet" href="style.css">
@@ -32,7 +31,6 @@
         <canvas id="icuChart"></canvas>
     </div>
 
-    <script src="script.js"></script>
     <script>
         const chartInstances = {};
 
@@ -81,7 +79,7 @@
             createChart('icuChart', '集中治療室在院数', [10, 12, 11, 13, 14, 15, 13], 'teal');
         }
 
-        fetchData();
+        document.addEventListener('DOMContentLoaded', fetchData);
     </script>
 
 </body>
