@@ -35,7 +35,7 @@
 
     async function fetchDashboardData() {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbzMSwzKY50_gQYf1i1uG0DE-NZZVC9fkVtPnwVKaY64QXPHNGw4exHntzuLv-qXmQnc/exec');
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzFNOekouxWlJ3g_q6Fg3ZXTX8udctKQSBKAwkupswvDaT5GJAF2dc2t1mDMdT2jA9q/exec');
             if (!response.ok) throw new Error(`ネットワークエラー: ${response.status}`);
 
             const data = await response.json();
