@@ -29,7 +29,7 @@
     <canvas id="generalWardChart"></canvas>
     <canvas id="icuChart"></canvas>
 
-   <script>
+  <script>
     document.getElementById('surgery-register-card').addEventListener('click', function() {
         window.open('surgery_register.html', '_blank');
     });
@@ -63,11 +63,16 @@
             ];
 
             chartConfigs.forEach(config => {
+                console.log(`${config.label} のデータ:`, config.data); // デバッグログ
+
                 if (config.data && Array.isArray(config.data.labels) && Array.isArray(config.data.values)) {
                     createChart(config.id, config.label, config.data);
                 } else {
-                    console.warn(`${config.label} のデータが不完全です。`);
-                    createChart(config.id, config.label, { labels: [], values: [] });
+                    console.warn(`${config.label} のデータが不完全です。仮データを表示します。`);
+                    createChart(config.id, config.label, { 
+                        labels: ['1日', '2日', '3日', '4日', '5日'], 
+                        values: [0, 0, 0, 0, 0] 
+                    });
                 }
             });
 
@@ -101,4 +106,3 @@
 
     document.addEventListener('DOMContentLoaded', fetchDashboardData);
 </script>
-
