@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病院経営ダッシュボード</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <h1>病院経営ダッシュボード</h1>
+    <div class="date-display" id="latest-date">日付: <span id="date">--</span> 更新時刻: <span id="update-time">--:--</span></div>
+
+    <div class="dashboard">
+        <div class="card" id="bed-occupancy"><h3>病床利用率</h3><strong id="bed-occupancy-value">--%</strong></div>
+        <div class="card" id="ambulance-arrivals"><h3>救急車搬入</h3><strong id="ambulance-arrivals-value">--台</strong></div>
+        <div class="card" id="inpatients"><h3>入院患者</h3><strong id="inpatients-value">--人</strong></div>
+        <div class="card" id="discharges"><h3>退院予定</h3><strong id="discharges-value">--人</strong></div>
+        <div class="card" id="general-ward"><h3>一般病棟在院数</h3><strong id="general-ward-value">--/218 床</strong></div>
+        <div class="card" id="icu"><h3>集中治療室在院数</h3><strong id="icu-value">--/16 床</strong></div>
+        <div class="card" id="surgery-register-card"><h3>手術台帳</h3><strong>クリックして表示</strong></div>
+    </div>
+
+    <canvas id="bedChart"></canvas>
+    <canvas id="ambulanceChart"></canvas>
+    <canvas id="inpatientsChart"></canvas>
+    <canvas id="dischargesChart"></canvas>
+    <canvas id="generalWardChart"></canvas>
+    <canvas id="icuChart"></canvas>
 <script>
     document.getElementById('surgery-register-card').addEventListener('click', function() {
         window.open('surgery_register.html', '_blank');
