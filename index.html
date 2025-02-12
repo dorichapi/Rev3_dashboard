@@ -29,76 +29,76 @@
     <canvas id="generalWardChart"></canvas>
     <canvas id="icuChart"></canvas>
 
-    <script>
-        document.getElementById('surgery-register-card').addEventListener('click', function() {
-            window.open('surgery_register.html', '_blank');
-        });
+   <script>
+    document.getElementById('surgery-register-card').addEventListener('click', function() {
+        window.open('surgery_register.html', '_blank');
+    });
 
-        async function fetchDashboardData() {
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzMSwzKY50_gQYf1i1uG0DE-NZZVC9fkVtPnwVKaY64QXPHNGw4exHntzuLv-qXmQnc/exec');
-                if (!response.ok) throw new Error(`ネットワークエラー: ${response.status}`);
+    async function fetchDashboardData() {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzMSwzKY50_gQYf1i1uG0DE-NZZVC9fkVtPnwVKaY64QXPHNGw4exHntzuLv-qXmQnc/exec');
+            if (!response.ok) throw new Error(`ネットワークエラー: ${response.status}`);
 
-                const data = await response.json();
+            const data = await response.json();
+            console.log('取得したデータ:', data);  // デバッグ用
 
-                document.getElementById('date').textContent = data.date || '--';
-                document.getElementById('update-time').textContent = data.updateTime || '--:--';
-                document.getElementById('bed-occupancy-value').textContent = data.bedOccupancy ? data.bedOccupancy + '%' : '--%';
-                document.getElementById('ambulance-arrivals-value').textContent = data.ambulanceArrivals ? data.ambulanceArrivals + '台' : '--台';
-                document.getElementById('inpatients-value').textContent = data.inpatients ? data.inpatients + '人' : '--人';
-                document.getElementById('discharges-value').textContent = data.discharges ? data.discharges + '人' : '--人';
-                document.getElementById('general-ward-value').textContent = data.generalWard ? data.generalWard + '/218 床' : '--/218 床';
-                document.getElementById('icu-value').textContent = data.icu ? data.icu + '/16 床' : '--/16 床';
+            // データの表示
+            document.getElementById('date').textContent = data.date || '--';
+            document.getElementById('update-time').textContent = data.updateTime || '--:--';
+            document.getElementById('bed-occupancy-value').textContent = data.bedOccupancy ? data.bedOccupancy + '%' : '--%';
+            document.getElementById('ambulance-arrivals-value').textContent = data.ambulanceArrivals ? data.ambulanceArrivals + '台' : '--台';
+            document.getElementById('inpatients-value').textContent = data.inpatients ? data.inpatients + '人' : '--人';
+            document.getElementById('discharges-value').textContent = data.discharges ? data.discharges + '人' : '--人';
+            document.getElementById('general-ward-value').textContent = data.generalWard ? data.generalWard + '/218 床' : '--/218 床';
+            document.getElementById('icu-value').textContent = data.icu ? data.icu + '/16 床' : '--/16 床';
 
-                // チェックしてからグラフを作成
-                if (data.bedChartData && data.bedChartData.labels && data.bedChartData.values) {
-                    createChart('bedChart', '病床利用率 (%)', data.bedChartData);
-                }
-                if (data.ambulanceChartData && data.ambulanceChartData.labels && data.ambulanceChartData.values) {
-                    createChart('ambulanceChart', '救急車搬入数', data.ambulanceChartData);
-                }
-                if (data.inpatientsChartData && data.inpatientsChartData.labels && data.inpatientsChartData.values) {
-                    createChart('inpatientsChart', '入院患者数', data.inpatientsChartData);
-                }
-                if (data.dischargesChartData && data.dischargesChartData.labels && data.dischargesChartData.values) {
-                    createChart('dischargesChart', '退院予定数', data.dischargesChartData);
-                }
-                if (data.generalWardChartData && data.generalWardChartData.labels && data.generalWardChartData.values) {
-                    createChart('generalWardChart', '一般病棟在院数', data.generalWardChartData);
-                }
-                if (data.icuChartData && data.icuChartData.labels && data.icuChartData.values) {
-                    createChart('icuChart', '集中治療室在院数', data.icuChartData);
-                }
+            // グラフ描画
+            const chartConfigs = [
+                { id: 'bedChart', label: '病床利用率 (%)', data: data.bedChartData },
+                { id: 'ambulanceChart', label: '救急車搬入数', data: data.ambulanceChartData },
+                { id: 'inpatientsChart', label: '入院患者数', data: data.inpatientsChartData },
+                { id: 'dischargesChart', label: '退院予定数', data: data.dischargesChartData },
+                { id: 'generalWardChart', label: '一般病棟在院数', data: data.generalWardChartData },
+                { id: 'icuChart', label: '集中治療室在院数', data: data.icuChartData }
+            ];
 
-            } catch (error) {
-                console.error('データ取得エラー:', error);
-                alert('ダッシュボードデータの取得に失敗しました。URLまたはネットワーク接続を確認してください。');
-            }
-        }
-
-        function createChart(canvasId, label, data) {
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: data.labels || [],
-                    datasets: [{
-                        label: label,
-                        data: data.values || [],
-                        borderColor: 'blue',
-                        backgroundColor: 'lightblue',
-                        fill: false
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false
+            chartConfigs.forEach(config => {
+                if (config.data && Array.isArray(config.data.labels) && Array.isArray(config.data.values)) {
+                    createChart(config.id, config.label, config.data);
+                } else {
+                    console.warn(`${config.label} のデータが不完全です。`);
+                    createChart(config.id, config.label, { labels: [], values: [] });
                 }
             });
+
+        } catch (error) {
+            console.error('データ取得エラー:', error);
+            alert('ダッシュボードデータの取得に失敗しました。URLまたはネットワーク接続を確認してください。');
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', fetchDashboardData);
-    </script>
+    function createChart(canvasId, label, data) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
 
-</body>
-</html>
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels || [],
+                datasets: [{
+                    label: label,
+                    data: data.values || [],
+                    borderColor: 'blue',
+                    backgroundColor: 'lightblue',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchDashboardData);
+</script>
+
