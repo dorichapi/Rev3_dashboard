@@ -80,7 +80,7 @@
             chartInstances[canvasId] = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['1月', '2月', '3月', '4月', '5月'],
+                    labels: ['10日', '11日', '12日', '13日', '14日', '15日', '16日'],
                     datasets: [{
                         label: label,
                         data: data,
@@ -93,15 +93,6 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: label,
-                            font: {
-                                size: 18
-                            }
-                        }
-                    },
                     scales: {
                         y: {
                             beginAtZero: true
@@ -112,12 +103,12 @@
         }
 
         function fetchData() {
-            createChart('bedChart', '病床利用率 (%)', [75, 80, 78, 85, 90], 'blue');
-            createChart('ambulanceChart', '救急車搬入数', [30, 45, 50, 60, 55], 'red');
-            createChart('inpatientsChart', '入院患者数', [120, 130, 125, 140, 135], 'green');
-            createChart('dischargesChart', '退院予定数', [20, 25, 22, 30, 28], 'orange');
-            createChart('generalWardChart', '一般病棟在院数', [200, 210, 205, 215, 220], 'purple');
-            createChart('icuChart', '集中治療室在院数', [10, 12, 11, 13, 14], 'teal');
+            createChart('bedChart', '病床利用率 (%)', [75, 80, 78, 85, 90, 88, 92], 'blue');
+            createChart('ambulanceChart', '救急車搬入数', [30, 45, 50, 60, 55, 48, 52], 'red');
+            createChart('inpatientsChart', '入院患者数', [120, 130, 125, 140, 135, 138, 142], 'green');
+            createChart('dischargesChart', '退院予定数', [20, 25, 22, 30, 28, 26, 24], 'orange');
+            createChart('generalWardChart', '一般病棟在院数', [200, 210, 205, 215, 220, 218, 225], 'purple');
+            createChart('icuChart', '集中治療室在院数', [10, 12, 11, 13, 14, 15, 13], 'teal');
         }
 
         fetchData();
