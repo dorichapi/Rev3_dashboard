@@ -40,7 +40,7 @@
     <script>
         async function fetchSpreadsheetData() {
             try {
-                const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vT3s8hNfXbDPSgV6mErCG4F8N7G8u0r5tZpMDmL2Q4bXK5VOJHa7XlTqNz7_YUJk-pubDwn9kpsA3Eh/pub?output=csv');
+                const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRt0i9MAfsJ71SlOT6KyhTjvAtlLNLYrf1pRj8AkFejpXW28OcX3hiVdR3207Paga3GQGP-Q6QRy8Rc/pub?gid=0&single=true&output=csv');
                 if (!response.ok) throw new Error('ネットワークエラー');
                 const data = await response.text();
                 const rows = data.trim().split('\n').map(row => row.split(','));
