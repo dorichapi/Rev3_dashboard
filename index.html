@@ -50,12 +50,25 @@
                 document.getElementById('general-ward-value').textContent = data.generalWard ? data.generalWard + '/218 床' : '--/218 床';
                 document.getElementById('icu-value').textContent = data.icu ? data.icu + '/16 床' : '--/16 床';
 
-                createChart('bedChart', '病床利用率 (%)', data.bedChartData);
-                createChart('ambulanceChart', '救急車搬入数', data.ambulanceChartData);
-                createChart('inpatientsChart', '入院患者数', data.inpatientsChartData);
-                createChart('dischargesChart', '退院予定数', data.dischargesChartData);
-                createChart('generalWardChart', '一般病棟在院数', data.generalWardChartData);
-                createChart('icuChart', '集中治療室在院数', data.icuChartData);
+                // チェックしてからグラフを作成
+                if (data.bedChartData && data.bedChartData.labels && data.bedChartData.values) {
+                    createChart('bedChart', '病床利用率 (%)', data.bedChartData);
+                }
+                if (data.ambulanceChartData && data.ambulanceChartData.labels && data.ambulanceChartData.values) {
+                    createChart('ambulanceChart', '救急車搬入数', data.ambulanceChartData);
+                }
+                if (data.inpatientsChartData && data.inpatientsChartData.labels && data.inpatientsChartData.values) {
+                    createChart('inpatientsChart', '入院患者数', data.inpatientsChartData);
+                }
+                if (data.dischargesChartData && data.dischargesChartData.labels && data.dischargesChartData.values) {
+                    createChart('dischargesChart', '退院予定数', data.dischargesChartData);
+                }
+                if (data.generalWardChartData && data.generalWardChartData.labels && data.generalWardChartData.values) {
+                    createChart('generalWardChart', '一般病棟在院数', data.generalWardChartData);
+                }
+                if (data.icuChartData && data.icuChartData.labels && data.icuChartData.values) {
+                    createChart('icuChart', '集中治療室在院数', data.icuChartData);
+                }
 
             } catch (error) {
                 console.error('データ取得エラー:', error);
@@ -68,10 +81,10 @@
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data.labels,
+                    labels: data.labels || [],
                     datasets: [{
                         label: label,
-                        data: data.values,
+                        data: data.values || [],
                         borderColor: 'blue',
                         backgroundColor: 'lightblue',
                         fill: false
