@@ -29,7 +29,7 @@
     <canvas id="generalWardChart"></canvas>
     <canvas id="icuChart"></canvas>
 
-  <script>
+ <script>
     document.getElementById('surgery-register-card').addEventListener('click', function() {
         window.open('surgery_register.html', '_blank');
     });
@@ -53,28 +53,12 @@
             document.getElementById('icu-value').textContent = data.icu ? data.icu + '/16 床' : '--/16 床';
 
             // グラフ描画
-            const chartConfigs = [
-                { id: 'bedChart', label: '病床利用率 (%)', data: data.bedChartData },
-                { id: 'ambulanceChart', label: '救急車搬入数', data: data.ambulanceChartData },
-                { id: 'inpatientsChart', label: '入院患者数', data: data.inpatientsChartData },
-                { id: 'dischargesChart', label: '退院予定数', data: data.dischargesChartData },
-                { id: 'generalWardChart', label: '一般病棟在院数', data: data.generalWardChartData },
-                { id: 'icuChart', label: '集中治療室在院数', data: data.icuChartData }
-            ];
-
-            chartConfigs.forEach(config => {
-                console.log(`${config.label} のデータ:`, config.data); // デバッグログ
-
-                if (config.data && Array.isArray(config.data.labels) && Array.isArray(config.data.values)) {
-                    createChart(config.id, config.label, config.data);
-                } else {
-                    console.warn(`${config.label} のデータが不完全です。仮データを表示します。`);
-                    createChart(config.id, config.label, { 
-                        labels: ['1日', '2日', '3日', '4日', '5日'], 
-                        values: [0, 0, 0, 0, 0] 
-                    });
-                }
-            });
+            createChart('bedChart', '病床利用率 (%)', data.bedChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
+            createChart('ambulanceChart', '救急車搬入数', data.ambulanceChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
+            createChart('inpatientsChart', '入院患者数', data.inpatientsChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
+            createChart('dischargesChart', '退院予定数', data.dischargesChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
+            createChart('generalWardChart', '一般病棟在院数', data.generalWardChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
+            createChart('icuChart', '集中治療室在院数', data.icuChartData || { labels: ['-', '-', '-', '-', '-', '-', '-'], values: [0, 0, 0, 0, 0, 0, 0] });
 
         } catch (error) {
             console.error('データ取得エラー:', error);
@@ -88,10 +72,10 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.labels || [],
+                labels: data.labels,
                 datasets: [{
                     label: label,
-                    data: data.values || [],
+                    data: data.values,
                     borderColor: 'blue',
                     backgroundColor: 'lightblue',
                     fill: false
