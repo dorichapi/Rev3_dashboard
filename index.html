@@ -19,19 +19,26 @@
         <div class="card"><h3>退院予定</h3><strong>--人</strong></div>
         <div class="card"><h3>一般病棟在院数</h3><strong>--/218 床</strong></div>
         <div class="card"><h3>集中治療室在院数</h3><strong>--/16 床</strong></div>
-        <div class="card" id="spreadsheet-card"><h3>スプレッドシートデータ</h3><strong>クリックして表示</strong></div>
+        <div class="card" id="surgery-register-card"><h3>手術台帳</h3><strong>クリックして表示</strong></div>
     </div>
 
-    <div id="spreadsheet-data" style="display:none;">
-        <iframe src="https://docs.google.com/spreadsheets/d/1CHU8Cgxgg5IvL3nB6ackAdqxe7-CNkmWDvtYE-keuXI/preview" style="width:100%; height:600px; border:none;"></iframe>
+    <div class="charts-grid">
+        <canvas id="bedChart"></canvas>
+        <canvas id="ambulanceChart"></canvas>
+        <canvas id="inpatientsChart"></canvas>
+        <canvas id="dischargesChart"></canvas>
+        <canvas id="generalWardChart"></canvas>
+        <canvas id="icuChart"></canvas>
     </div>
 
     <script src="script.js"></script>
     <script>
-        document.getElementById('spreadsheet-card').addEventListener('click', function() {
-            const spreadsheetData = document.getElementById('spreadsheet-data');
-            spreadsheetData.style.display = (spreadsheetData.style.display === 'none') ? 'block' : 'none';
+        document.getElementById('surgery-register-card').addEventListener('click', function() {
+            window.open('https://docs.google.com/spreadsheets/d/1CHU8Cgxgg5IvL3nB6ackAdqxe7-CNkmWDvtYE-keuXI/edit', '_blank');
         });
+
+        // グラフの再表示
+        fetchData();
     </script>
 
 </body>
