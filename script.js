@@ -1,5 +1,5 @@
 // ✅ Google Apps ScriptのURLをここに貼り付け
-const apiUrl = "https://script.google.com/macros/s/AKfycbzPzYI7W7MPyhHBARLWYdmV_6q4a0v9UTufnO9sqSYhTWNDJAv1ushEVgo1KyZ2RO3E/exec";
+const apiUrl = "https://script.google.com/macros/s/AKfycbzFNOekouxWlJ3g_q6Fg3ZXTX8udctKQSBKAwkupswvDaT5GJAF2dc2t1mDMdT2jA9q/exec";
 
 // ✅ データ取得 & グラフ表示
 async function fetchData() {
@@ -27,7 +27,7 @@ async function fetchData() {
         document.querySelector(".dashboard .card:nth-child(2) strong").innerText = `${latestData["救急車搬入数"]}台`;
         document.querySelector(".dashboard .card:nth-child(3) strong").innerText = `${latestData["入院患者数"]}人`;
         document.querySelector(".dashboard .card:nth-child(4) strong").innerText = `${latestData["退院予定数"]}人`;
-        document.querySelector(".dashboard .card:nth-child(5) strong").innerText = `${latestData["一般病棟在院数"]}/202 床`;
+        document.querySelector(".dashboard .card:nth-child(5) strong").innerText = `${latestData["一般病棟在院数"]}/218 床`;
         document.querySelector(".dashboard .card:nth-child(6) strong").innerText = `${latestData["集中治療室在院数"]}/16 床`;
 
         // ✅ グラフ描画
@@ -43,16 +43,6 @@ async function fetchData() {
         console.error("❌ データ取得エラー:", error);
     }
 }
-
-// ✅ 手術台帳を開くクリックイベント
-document.getElementById('surgery-register-card').addEventListener('click', function() {
-    window.open('https://docs.google.com/spreadsheets/d/1CHU8Cgxgg5IvL3nB6ackAdqxe7-CNkmWDvtYE-keuXI/edit', '_blank');
-});
-
-// ✅ 当直管理表を開くクリックイベント（新規追加）
-document.getElementById('duty-management-card').addEventListener('click', function() {
-    window.open('https://docs.google.com/spreadsheets/d/NEW_SPREADSHEET_ID/edit', '_blank'); // ← ここに「当直管理表」のスプレッドシートURLを入れる
-});
 
 // ✅ グラフ作成関数
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
