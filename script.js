@@ -1,5 +1,5 @@
 // ✅ Google Apps ScriptのURLをここに貼り付け
-const apiUrl = "https://script.google.com/macros/s/AKfycbzFNOekouxWlJ3g_q6Fg3ZXTX8udctKQSBKAwkupswvDaT5GJAF2dc2t1mDMdT2jA9q/exec";
+const apiUrl = https://script.google.com/macros/s/AKfycbzPzYI7W7MPyhHBARLWYdmV_6q4a0v9UTufnO9sqSYhTWNDJAv1ushEVgo1KyZ2RO3E/exec";
 
 // ✅ データ取得 & グラフ表示
 async function fetchData() {
@@ -43,6 +43,16 @@ async function fetchData() {
         console.error("❌ データ取得エラー:", error);
     }
 }
+
+// ✅ 手術台帳を開くクリックイベント
+document.getElementById('surgery-register-card').addEventListener('click', function() {
+    window.open('https://docs.google.com/spreadsheets/d/1CHU8Cgxgg5IvL3nB6ackAdqxe7-CNkmWDvtYE-keuXI/edit', '_blank');
+});
+
+// ✅ 当直管理表を開くクリックイベント（新規追加）
+document.getElementById('duty-management-card').addEventListener('click', function() {
+    window.open('https://docs.google.com/spreadsheets/d/NEW_SPREADSHEET_ID/edit', '_blank'); // ← ここに「当直管理表」のスプレッドシートURLを入れる
+});
 
 // ✅ グラフ作成関数
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
